@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+
+# Compiled output
+build/
+dist/
+
+# Environment variables
+.env
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+
+# Ignore TypeScript build output
+*.js
+*.js.map
+
+# Ignore Sass cache
+.sass-cache/
+
+# Ignore MongoDB data directory
+/data/
