@@ -3,14 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-
 const cookieParser = require("cookie-parser");
-
-const {
-  registerUser,
-  loginUser,
-  getProfile,
-} = require("./controllers/authController");
 
 dotenv.config();
 const app = express();

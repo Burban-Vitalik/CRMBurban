@@ -2,10 +2,6 @@ const User = require("../models/user");
 import { hashPassword, comparePassword } from "../helpers/auth";
 const jwt = require("jsonwebtoken");
 
-const test = (req: any, res: any) => {
-  res.json("test is working");
-};
-
 const registerUser = async (req: any, res: any) => {
   try {
     const { name, email, password } = req.body;
@@ -85,6 +81,15 @@ const loginUser = async (req: any, res: any) => {
   }
 };
 
+const logoutUser = async (req: any, res: any) => {
+  try {
+    res.clearCookie("token").json({ message: "Logged out successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 const getProfile = (req: any, res: any) => {
   const { token } = req.cookies;
 
@@ -101,8 +106,8 @@ const getProfile = (req: any, res: any) => {
 };
 
 module.exports = {
-  test,
   registerUser,
   loginUser,
   getProfile,
+  logoutUser,
 };

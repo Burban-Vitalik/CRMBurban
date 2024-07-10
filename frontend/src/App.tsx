@@ -24,6 +24,7 @@ const App = () => {
               <Route element={<PrivateRoute />}>
                 <Route path="/profile" element={<Dashboard />} />
               </Route>
+
               {/* Public Router */}
               <Route element={<PublicRoute />}>
                 <Route path="/register" element={<Register />} />

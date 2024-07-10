@@ -6,7 +6,8 @@ import { UserContext } from "../context/userContext";
 const PrivateRoute = () => {
   const { user }: any = useContext(UserContext);
 
-  return user ? <Outlet /> : <Navigate to="/login" />;
+  // return user ? <Outlet /> : <Navigate to="/login" />;
+  return <Outlet />;
 };
 
 export default PrivateRoute;
