@@ -8,7 +8,10 @@ interface IRegisterProps {}
 export const Register: React.FC<IRegisterProps> = () => {
   return (
     <Container maxWidth="sm">
-      <Paper elevation={3} sx={{ padding: 3, marginTop: 8 }}>
+      <Paper
+        elevation={3}
+        sx={{ padding: 3, marginTop: 8, textAlign: "center" }}
+      >
         <Typography variant="h4" component="h1" gutterBottom>
           Register
         </Typography>

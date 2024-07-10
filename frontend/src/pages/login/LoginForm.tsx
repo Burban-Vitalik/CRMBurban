@@ -3,6 +3,7 @@ import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { loginValidationSchema } from "../../validation/schemas";
 
 interface ILoginFormProps {}
 
@@ -28,8 +29,12 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
     }
   };
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {({ isSubmitting }) => (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={loginValidationSchema}
+    >
+      {({ isSubmitting, touched, errors }) => (
         <Form>
           <Field
             name="email"
@@ -37,8 +42,11 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
             label="Email"
             fullWidth
             margin="normal"
+            helperText={
+              touched.email && errors.email && <ErrorMessage name="email" />
+            }
+            error={touched.email && !!errors.email}
           />
-          <ErrorMessage name="email" component="div" />
           <Field
             name="password"
             as={TextField}
@@ -46,8 +54,12 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
             label="Password"
             fullWidth
             margin="normal"
+            helperText={
+              touched.password &&
+              errors.password && <ErrorMessage name="password" />
+            }
+            error={touched.password && !!errors.password}
           />
-          <ErrorMessage name="password" component="div" />
           <Button
             type="submit"
             variant="contained"
