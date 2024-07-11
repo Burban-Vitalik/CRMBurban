@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 import { Register } from "./pages/register/Register";
 import { Login } from "./pages/login/Login";
 import { UserContextProvider } from "./context/userContext";
-import Dashboard from "./Dashboard";
+import Dashboard from "./pages/profile/Dashboard";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import PublicRoute from "./routes/PublicRoute";
