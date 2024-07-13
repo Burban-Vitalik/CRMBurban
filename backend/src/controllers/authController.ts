@@ -1,5 +1,6 @@
 const User = require("../models/user");
 import { hashPassword, comparePassword } from "../helpers/auth";
+import userProfile from "../models/userProfile";
 const jwt = require("jsonwebtoken");
 
 const registerUser = async (req: any, res: any) => {
@@ -29,11 +30,12 @@ const registerUser = async (req: any, res: any) => {
     }
 
     const hashedPassword = await hashPassword(password);
-    const user = await User.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
+
+    // Create the user in the User collection
+    const user = await User.create({ name, email, password: hashedPassword });
+
+    // Create user profile in userProfiles collection
+    await userProfile.create({ userId: user._id });
 
     return res.json(user);
   } catch (error) {

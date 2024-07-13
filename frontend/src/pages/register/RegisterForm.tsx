@@ -1,9 +1,9 @@
 import { Button, TextField } from "@mui/material";
-import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { registerValidationSchema } from "../../validation/schemas";
+import { register } from "../../api/authApi";
 
 interface IRegisterFormProps {}
 
@@ -19,15 +19,9 @@ export const RegisterForm: React.FC<IRegisterFormProps> = () => {
     values: typeof initialValues,
     { setSubmitting }: any
   ) => {
-    try {
-      const response = await axios.post("/register", values);
-      console.log(response.data);
-      navigate("/login");
-    } catch (error) {
-      console.error("Registration error:", error);
-    } finally {
-      setSubmitting(false);
-    }
+    await register(values)
+      .then(() => navigate("/login"))
+      .finally(() => setSubmitting(false));
   };
 
   return (

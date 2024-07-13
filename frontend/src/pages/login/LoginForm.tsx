@@ -1,9 +1,9 @@
 import { Button, TextField } from "@mui/material";
-import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { loginValidationSchema } from "../../validation/schemas";
+import { login } from "../../api/authApi";
 
 interface ILoginFormProps {}
 
@@ -18,15 +18,9 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
     values: typeof initialValues,
     { setSubmitting }: any
   ) => {
-    try {
-      const response = await axios.post("/login", values);
-      console.log(response.data);
-      navigate("/profile");
-    } catch (error) {
-      console.error("Login error:", error);
-    } finally {
-      setSubmitting(false);
-    }
+    await login(values)
+      .then((_) => navigate("/profile"))
+      .finally(() => setSubmitting(false));
   };
   return (
     <Formik

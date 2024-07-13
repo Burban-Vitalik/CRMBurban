@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import ProfileCard from "./ProfileCard";
+import { Button } from "@mui/material";
+import { logout } from "../../api/authApi";
 
 const Dashboard = () => {
   const { user, loading }: any = useContext(UserContext);
@@ -18,7 +20,6 @@ const Dashboard = () => {
   if (!user) {
     navigate("/login");
     return <></>;
-    // return <div>No user</div>;
   }
 
   return (
@@ -34,7 +35,7 @@ const Dashboard = () => {
         gender={"Male"}
         number={"+380-95-134-1843"}
       />
-      {/* <Button onClick={logoutUser}>Logout</Button> */}
+      <Button onClick={async () => await logout()}>Logout</Button>
     </div>
   );
 };

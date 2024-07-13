@@ -13,6 +13,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileCardProps {
   userPhoto: string;
@@ -37,6 +38,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   location,
   number,
 }) => {
+  const navigate = useNavigate();
+
+  const navigateToEdit = "/profile/edit";
+
   return (
     <Card
       sx={{ maxWidth: 300, mt: 4, p: 2, position: "relative", height: "100%" }}
@@ -81,6 +86,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               top: 10,
               right: 10,
             }}
+            onClick={() => navigate(navigateToEdit)}
           >
             <EditIcon />
           </IconButton>
