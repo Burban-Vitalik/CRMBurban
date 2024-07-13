@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
-import { Button, Grid, TextField } from "@mui/material";
-import { Field, Form, Formik } from "formik";
+import { Button, Grid } from "@mui/material";
+import { Form, Formik } from "formik";
 import { UserContext } from "../../context/userContext";
 import { updateUserProfile } from "../../api/profileApi";
+import CustomTextField from "../../components/custom/CustomTextField";
 
 interface IProfileEditFormProps {}
 
 const ProfileEditForm: React.FC<IProfileEditFormProps> = () => {
   const { user }: any = useContext(UserContext);
-
-  console.log("userId", user);
 
   const initialValues = {
     firstName: user?.name || "",
@@ -31,46 +30,31 @@ const ProfileEditForm: React.FC<IProfileEditFormProps> = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      {({ values, handleChange }) => (
+      {({}) => (
         <Form>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <Field
-                as={TextField}
-                variant="outlined"
-                fullWidth
-                id="firstName"
+              <CustomTextField
                 name="firstName"
                 label="First Name"
-                value={values.firstName}
-                onChange={handleChange}
                 size="small"
+                id="firstName"
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Field
-                as={TextField}
-                variant="outlined"
-                fullWidth
-                id="lastName"
+              <CustomTextField
                 name="lastName"
+                id="lastName"
                 label="Last Name"
-                value={values.lastName}
-                onChange={handleChange}
                 size="small"
                 disabled
               />
             </Grid>
             <Grid item xs={12} md={12}>
-              <Field
-                as={TextField}
-                variant="outlined"
-                fullWidth
-                id="email"
+              <CustomTextField
                 name="email"
+                id="email"
                 label="Email"
-                value={values.email}
-                onChange={handleChange}
                 size="small"
                 disabled
               />

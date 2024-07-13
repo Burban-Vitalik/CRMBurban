@@ -1,9 +1,10 @@
-import { Button, TextField } from "@mui/material";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Button } from "@mui/material";
+import { Form, Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { registerValidationSchema } from "../../validation/schemas";
 import { register } from "../../api/authApi";
+import CustomTextField from "../../components/custom/CustomTextField";
 
 interface IRegisterFormProps {}
 
@@ -30,43 +31,12 @@ export const RegisterForm: React.FC<IRegisterFormProps> = () => {
       onSubmit={onSubmit}
       validationSchema={registerValidationSchema}
     >
-      {({ isSubmitting, touched, errors }) => (
+      {({ isSubmitting }) => (
         <Form>
-          <Field
-            name="name"
-            as={TextField}
-            label="Name"
-            fullWidth
-            margin="normal"
-            helperText={
-              touched.name && errors.name && <ErrorMessage name="name" />
-            }
-            error={touched.name && !!errors.name}
-          />
-          <Field
-            name="email"
-            as={TextField}
-            label="Email"
-            fullWidth
-            margin="normal"
-            helperText={
-              touched.email && errors.email && <ErrorMessage name="email" />
-            }
-            error={touched.email && !!errors.email}
-          />
-          <Field
-            name="password"
-            as={TextField}
-            type="password"
-            label="Password"
-            fullWidth
-            margin="normal"
-            helperText={
-              touched.password &&
-              errors.password && <ErrorMessage name="password" />
-            }
-            error={touched.password && !!errors.password}
-          />
+          <CustomTextField name="name" label="Name" margin="normal" />
+          <CustomTextField name="email" label="Email" margin="normal" />
+          <CustomTextField name="password" label="Password" margin="normal" />
+
           <Button
             type="submit"
             variant="contained"

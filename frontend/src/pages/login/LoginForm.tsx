@@ -4,6 +4,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { loginValidationSchema } from "../../validation/schemas";
 import { login } from "../../api/authApi";
+import CustomTextField from "../../components/custom/CustomTextField";
 
 interface ILoginFormProps {}
 
@@ -21,6 +22,8 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
     await login(values)
       .then((_) => navigate("/profile"))
       .finally(() => setSubmitting(false));
+
+    console.log(values);
   };
   return (
     <Formik
@@ -28,32 +31,11 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
       onSubmit={onSubmit}
       validationSchema={loginValidationSchema}
     >
-      {({ isSubmitting, touched, errors }) => (
+      {({ isSubmitting }) => (
         <Form>
-          <Field
-            name="email"
-            as={TextField}
-            label="Email"
-            fullWidth
-            margin="normal"
-            helperText={
-              touched.email && errors.email && <ErrorMessage name="email" />
-            }
-            error={touched.email && !!errors.email}
-          />
-          <Field
-            name="password"
-            as={TextField}
-            type="password"
-            label="Password"
-            fullWidth
-            margin="normal"
-            helperText={
-              touched.password &&
-              errors.password && <ErrorMessage name="password" />
-            }
-            error={touched.password && !!errors.password}
-          />
+          <CustomTextField name="email" label="Email" margin="normal" />
+          <CustomTextField name="password" label="Password" margin="normal" />
+
           <Button
             type="submit"
             variant="contained"
