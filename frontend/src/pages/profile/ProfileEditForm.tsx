@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Form, Formik } from "formik";
 import { UserContext } from "../../context/userContext";
 import { updateUserProfile } from "../../api/profileApi";
 import CustomTextField from "../../components/custom/CustomTextField";
+import { CustomButton } from "../../components/custom/CustomButton";
 
 interface IProfileEditFormProps {}
 
@@ -60,14 +61,13 @@ const ProfileEditForm: React.FC<IProfileEditFormProps> = () => {
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Button
+              <CustomButton
+                label="Save"
                 type="submit"
                 variant="contained"
                 color="primary"
                 fullWidth
-              >
-                Save
-              </Button>
+              />
             </Grid>
           </Grid>
         </Form>

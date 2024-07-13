@@ -1,10 +1,10 @@
-import { Button, TextField } from "@mui/material";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { loginValidationSchema } from "../../validation/schemas";
 import { login } from "../../api/authApi";
 import CustomTextField from "../../components/custom/CustomTextField";
+import { CustomButton } from "../../components/custom/CustomButton";
 
 interface ILoginFormProps {}
 
@@ -36,15 +36,14 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
           <CustomTextField name="email" label="Email" margin="normal" />
           <CustomTextField name="password" label="Password" margin="normal" />
 
-          <Button
+          <CustomButton
             type="submit"
             variant="contained"
             color="primary"
             disabled={isSubmitting}
             fullWidth
-          >
-            Login
-          </Button>
+            label="Login"
+          />
         </Form>
       )}
     </Formik>

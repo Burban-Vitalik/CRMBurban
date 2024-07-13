@@ -1,10 +1,10 @@
-import { Button } from "@mui/material";
 import { Form, Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { registerValidationSchema } from "../../validation/schemas";
 import { register } from "../../api/authApi";
 import CustomTextField from "../../components/custom/CustomTextField";
+import { CustomButton } from "../../components/custom/CustomButton";
 
 interface IRegisterFormProps {}
 
@@ -37,15 +37,14 @@ export const RegisterForm: React.FC<IRegisterFormProps> = () => {
           <CustomTextField name="email" label="Email" margin="normal" />
           <CustomTextField name="password" label="Password" margin="normal" />
 
-          <Button
+          <CustomButton
             type="submit"
             variant="contained"
             color="primary"
             disabled={isSubmitting}
             fullWidth
-          >
-            Register
-          </Button>
+            label="Register"
+          />
         </Form>
       )}
     </Formik>

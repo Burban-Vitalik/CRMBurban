@@ -2,10 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import ProfileCard from "./ProfileCard";
-import { Button } from "@mui/material";
 import { logout } from "../../api/authApi";
+import { CustomButton } from "../../components/custom/CustomButton";
 
-const Dashboard = () => {
+interface IProfileProps {}
+
+const Profile: React.FC<IProfileProps> = () => {
   const { user, loading }: any = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -35,9 +37,9 @@ const Dashboard = () => {
         gender={"Male"}
         number={"+380-95-134-1843"}
       />
-      <Button onClick={async () => await logout()}>Logout</Button>
+      <CustomButton onClick={async () => await logout()} label="Logout" />
     </div>
   );
 };
 
-export default Dashboard;
+export default Profile;
