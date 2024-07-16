@@ -26,13 +26,12 @@ const App = () => {
                 <Route path="/profile" element={<Dashboard />} />
                 <Route path="/profile/edit" element={<ProfileEdit />} />
               </Route>
-
-              {/* Public Router */}
-              <Route element={<PublicRoute />}>
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-              </Route>
               <Route path="*" element={<NotFound />} />
+            </Route>
+            {/* Public Router */}
+            <Route element={<PublicRoute />}>
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
             </Route>
           </Routes>
         </Router>

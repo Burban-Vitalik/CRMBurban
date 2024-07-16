@@ -1,12 +1,10 @@
 import { Outlet } from "react-router-dom";
+import SideMenu from "./sideMenu/SideMenu";
 
 export const Layout = () => {
   return (
-    <div>
-      <div>{/* <p>Navbar</p> */}</div>
-      <main>
-        <Outlet />
-      </main>
-    </div>
+    <SideMenu>
+      <Outlet />
+    </SideMenu>
   );
 };
