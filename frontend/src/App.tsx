@@ -12,7 +12,6 @@ import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "@mui/material";
 import theme from "./mui/theme";
 import { ProfileEdit } from "./pages/profile/ProfileEdit";
-import Products from "./pages/Products";
 
 const App = () => {
   return (
@@ -24,7 +23,6 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               {/* Private Routes */}
               <Route element={<PrivateRoute />}>
-                <Route path="/products" element={<Products />} />
                 <Route path="/profile" element={<Dashboard />} />
                 <Route path="/profile/edit" element={<ProfileEdit />} />
               </Route>
