@@ -10,6 +10,7 @@ import { MenuItemsList } from "./MenuItemList";
 import { MenuHeader } from "./MenuHeader";
 import { Main, DrawerHeader } from "./SideMenu.styles";
 import { Divider } from "@mui/material";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
 const drawerWidth = 240;
 
@@ -46,7 +47,33 @@ const SideMenu: React.FC<ISideMenuProps> = ({ children }) => {
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader sx={{ display: "flex", alignItems: "center", p: 1 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              background: "#3C434E",
+              padding: "10px 5px",
+              borderRadius: "10px",
+            }}
+          >
+            <Box
+              component="img"
+              src="https://burbanbranding.com/wp-content/uploads/2023/05/burban-logo.png"
+              alt="Logo"
+              sx={{
+                maxWidth: "60%",
+                width: "100%",
+                height: "auto",
+                maxHeight: 40,
+              }}
+            />
+            <LocalShippingIcon
+              sx={{ ml: 1, fontSize: "26px", color: "white" }}
+            />
+          </Box>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
